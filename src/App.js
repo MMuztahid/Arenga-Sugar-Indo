@@ -14,6 +14,9 @@ import Distro from './pages/distro';
 import Home from './pages/home';
 import Product from './pages/product';
 
+
+
+
 function App() {
   return (
     <Router>
