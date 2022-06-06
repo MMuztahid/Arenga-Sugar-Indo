@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "public",
+    "public": "Arenga-Sugar-Indo",
     "ignore": [
       "firebase.json",
       "**/.*",
