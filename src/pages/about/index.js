@@ -1,103 +1,168 @@
 import React from "react";
-import {Box, Container, Divider, Stack, Typography} from "@mui/material";
+import {Box, Container, Divider, Typography, Modal, Button } from "@mui/material";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
 import TopBar from "../../components/topbar/AppBar";
 import WaButton from "../../components/wabutton/WaButton";
 import ScrollArrow from "../../components/scrolltop/ScrollTop";
-import Foto3 from "../../components/media/3.jpg";
-import DataTable from "../../components/datatabel/DataTable";
 import Materi from "../../components/swipermateri";
 import BottomBar from "../../components/botomnav/BottomNav";
 import MateriBenefits from "../../components/swipermateri1";
+import "../../App.css";
+
+import Foto3 from "../../components/media/about.png";
+import FotoMateri from '../../components/media/tabelcompare.png';
+import FotoMateri1 from '../../components/media/tabelcompare.png';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: '90%',
+  bgcolor: 'transparent',
+  boxShadow: 24,
+  p: 4,
+};
+const theme = createTheme();
+theme.typography.h1 = {
+  fontSize: '3.5rem',
+  '@media (min-width:600px)': {
+    fontSize: '3.5em',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '7rem',
+  },
+};
+theme.typography.h4 = {
+  fontSize: '1.125rem',
+  '@media (min-width:600px)': {
+    fontSize: '1.125rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '3.25rem',
+  },
+};
+theme.typography.h5 = {
+  fontSize: '1rem',
+  '@media (min-width:600px)': {
+    fontSize: '1rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '1.8rem',
+  },
+};
+theme.typography.h6 = {
+  fontSize: '0.9rem',
+  '@media (min-width:600px)': {
+    fontSize: '0.9rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '1.4rem',
+  },
+};
 
 function Company() {
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     return (
-        <Box 
+      <ThemeProvider theme={theme}>
+        <Box component='div'
             sx={{
             width: '100%',
-            height: '100%',
-            paddingTop: '90px',
+            paddingTop: { xs: '6vh', sm: '6vh', md: "10vh" },
+            marginTop: { xs: '6vh', sm: '6vh', md: "10vh" },
             backgroundColor:"#ffdead",
+            justifyContent: 'center',
+            height: "fit-content",
             }}
             >
             <TopBar></TopBar>
             <Container sx={{
               width: "100%",
-              height: "4000px",
+              height: "fit-content",
             }}>
-            <Typography variant='h2' gutterBottom component="div" sx={{
+            <Typography variant='h1' gutterBottom component="div" sx={{
               textAlign: "center",
               marginBottom: "60px",
-              fontFamily: `Roboto`,
+              fontFamily: `Sans-seriff`,
               fontWeight: '600',
               color: 'black'
             }}>
               About Arenga
             </Typography>
-            <Stack direction="row" spacing={3}>
-              <Container sx={{
-                width:'450px',
-                heigth: '400px'
-              }}>
-                <img src={Foto3} alt="" width="400" height="400" position="relative" />
-              </Container>
-              <Container sx={{
-                width: "600px",
-                height : "400px",
-                paddingTop : "100px",
-              }}>
-                <Typography variant="h6"sx={{
-                  textAlign:'center',
-                  color: "black",
-                  fontFamily: `Calibri`
-                }}>
-                  Arenga sugar is a sweetener made from nira which is derived from the male flower 
-                  bunches of the palm tree / zucker palme / aren palm / zuiker palm / sugar palm /
-                  gomuti palm. Nira, the basic ingredients of the arenga sugar is a sweet liquid 
-                  that comes from the process of tapping the plant stems.
-                </Typography>
-              </Container>
-            </Stack>
+            <img src={Foto3} alt="" style={{
+              display: 'block',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              width: '90%',
+            }}/>
             <Divider sx={{
-              marginTop:"80px",
-              marginBottom:'100px'
+              marginTop: { xs: '20px', sm: '20px', md: "80px" },
+              marginBottom: { xs: '40px', sm: '40px', md: "100px" },
             }}></Divider>
             <Typography variant="h5"textAlign="center" sx={{
               color: "black",
               fontFamily: `Roboto`,
-              fontWeight: '400'
             }}>ARENGA SUGAR IS DIFFERENT FROM COCONUT PALM SUGAR AND BROWN SUGAR</Typography>
             <Materi />
             <Divider sx={{
-                marginTop:"20px",
-                marginBottom:'80px'
-              }}></Divider>
-              <Typography variant="h6" sx={{
+                marginTop: { xs: '10px', sm: '10px', md: "20px" },
+                marginBottom: { xs: '20px', sm: '20px', md: "80px" },
+            }}></Divider>
+            <Typography variant="h6" sx={{
                 color: "black",
                 fontFamily: `Roboto`,
                 marginBottom: '40px'
-              }}>
+            }}>
                 per 100g serving contains :
-              </Typography>
-              <Container  sx={{
-                height: '400px'
-              }}>
-                <DataTable/>
+            </Typography>
+            <Container sx={{
+                width: { xs: '90%', sm: '90%', md: '80%'},
+                height: 'fit-content',
+                display: 'flex',
+                flexDirection:'column',
+                alignItems: 'center',
+            }}>
+                <img src={FotoMateri} alt="" style={{
+                  width: '100%',
+                  display: {xs: 'none', sm: 'none', md: 'block'},
+                  height: 'auto',
+                }}/>
+                <Button onClick={handleOpen} sx={{
+                  display: {xs: 'block', sm: 'block', md: 'none'},
+                }}>Click Here</Button>
+                <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+                >
+                  <Box sx={style}>
+                    <img src={FotoMateri1} alt="" style={{
+                      width: '100%',
+                      height: 'auto',
+                    }}/>        
+                  </Box>
+                </Modal>
               </Container>
               <Divider sx={{
-                marginTop:"20px",
-                marginBottom:'80px'
+                marginTop: { xs: '10px', sm: '10px', md: "20px" },
+                marginBottom:{ xs: '20px', sm: '20px', md: "80px" },
               }}></Divider>
               <Typography variant="h4" sx={{
                 marginBottom: '80px', 
                 textAlign: 'center', 
                 color: "black",
                 fontFamily:`Roboto`,
+                fontWeight: '600',
               }}>QnA</Typography>
               <Typography variant="h6" sx={{
                 marginBottom: '20px', 
                 color: "black",
                 fontFamily: `Roboto`,
-
+                fontWeight: '600'
                 }}>
                   How to make arenga sugar?
               </Typography>
@@ -133,7 +198,8 @@ function Company() {
                 marginBottomm:'20px', 
                 marginTop: '40px', 
                 color: "black",
-                fontFamily: `Roboto`
+                fontFamily: `Roboto`,
+                fontWeight: '600',
               }}>
                 What is the nutritional content of arenga sugar?
               </Typography>
@@ -194,8 +260,8 @@ function Company() {
                 marginTop: '20px',
                 marginBottom: '20px',
                 color: "black",
-                fontFamily: `Roboto`
-                
+                fontFamily: `Roboto`,
+                fontWeight: '600',                
               }}>
                 is Benefit of Arenga Sugar as Sweet as it taste?                
               </Typography>
@@ -214,8 +280,8 @@ function Company() {
                 amounts will also increase the blood sugar in much higher levels.
               </Typography>
               <Divider sx={{
-                marginTop:"80px",
-                marginBottom:'80px'
+                marginTop: { xs: '20px', sm: '20px', md: "80px" },
+                marginBottom: { xs: '20px', sm: '20px', md: "80px" },
               }}></Divider>
               <Typography variant="h4" sx={{
                 color:'black', 
@@ -240,6 +306,7 @@ function Company() {
             <ScrollArrow/>
             <BottomBar/>
             </Box>
+            </ThemeProvider>
     
         );
 

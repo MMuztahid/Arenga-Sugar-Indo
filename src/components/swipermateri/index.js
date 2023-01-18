@@ -1,6 +1,7 @@
 import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 // Import Swiper styles
 import "swiper/css";
@@ -11,10 +12,22 @@ import "./styles.css";
 // import required modules
 import { Keyboard, Navigation } from "swiper";
 import { Container, Typography } from "@mui/material";
+const theme = createTheme();
+
+theme.typography.h6 = {
+  fontSize: '0.9rem',
+  '@media (min-width:600px)': {
+    fontSize: '0.9rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '1.4rem',
+  },
+};
 
 function Materi() {
   return (
     <>
+    <ThemeProvider theme={theme}>
       <Swiper 
       loop={true}
       keyboard={{
@@ -95,6 +108,7 @@ function Materi() {
           </Typography></Container>
         </SwiperSlide>
       </Swiper>
+      </ThemeProvider>
     </>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 // Import Swiper styles
 import "swiper/css";
@@ -12,9 +13,22 @@ import "./styles.css";
 import { Keyboard, Navigation } from "swiper";
 import { Container, Typography } from "@mui/material";
 
+const theme = createTheme();
+
+theme.typography.h6 = {
+  fontSize: '0.9rem',
+  '@media (min-width:600px)': {
+    fontSize: '0.9rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '1.4rem',
+  },
+};
+
 function MateriBenefits() {
   return (
     <>
+      <ThemeProvider theme={theme}>
       <Swiper 
       loop={true}
       keyboard={{
@@ -29,7 +43,8 @@ function MateriBenefits() {
               fontFamily: `Calibri`,
               color: 'black',
               alignText: 'center',
-              marginBottom: '20px'
+              marginBottom: '20px',
+              fontWeight: '600',
             }}>Maintain blood sugar levels</Typography>
             <Typography variant="h6" sx={{
               fontFamily: `Calibri`,
@@ -50,7 +65,8 @@ function MateriBenefits() {
               fontFamily: `Calibri`,
               color: 'black',
               alignText: 'center',
-              marginBottom: '20px'
+              marginBottom: '20px',
+              fontWeight: '600',
             }}>Control blood pressure</Typography>
             <Typography variant="h6" sx={{
               fontFamily: `Calibri`,
@@ -73,7 +89,8 @@ function MateriBenefits() {
               fontFamily: `Calibri`,
               color: 'black',
               alignText: 'center',
-              marginBottom: '20px'
+              marginBottom: '20px',
+              fontWeight: '600',
             }}>Maintain bone health</Typography>
             <Typography variant="h6" sx={{
               fontFamily: `Calibri`,
@@ -94,7 +111,8 @@ function MateriBenefits() {
               fontFamily: `Calibri`,
               color: 'black',
               alignText: 'center',
-              marginBottom: '20px'
+              marginBottom: '20px',
+              fontWeight: '600',
             }}>Reduce the risk of kidney stones</Typography>
             <Typography variant="h6" sx={{
               fontFamily: `Calibri`,
@@ -111,6 +129,7 @@ function MateriBenefits() {
           </Container>
         </SwiperSlide>
       </Swiper>
+      </ThemeProvider>
     </>
   );
 }

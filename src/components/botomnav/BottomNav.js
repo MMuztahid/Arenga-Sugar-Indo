@@ -2,56 +2,64 @@ import React from "react";
 import { Container, Stack, Typography, Link } from '@mui/material';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import '../../App.css';
 
 
 function BottomBar(){
-    return (        
-        <div className="bottomBar">
-            <Stack direction={'row'} spacing={2} sx={{
-                padding: '20px 20px 20px 20px',
-                marginLeft: '20px'
+    return (
+        <div className="bottom-bar" >
+            <Stack direction={{xs: 'column', sm:"column", md:"row"}} spacing={{ xs: 1,sm: 1, md:8 }} style={{
+                width: '100%',
+                display: 'flex',
+                padding: '0px auto',
+                marginLeft: 'auto',
+                marginRight: 'auto',               
             }}>
                 <Container sx={{
-                    width: '50px'
-                }}></Container>
-                <Container sx={{
-                width: '450px',
+                width: {xs: 'xs', sm: 'xs', md: '40%'},
                 display : 'flex',
                 flexDirection: 'column',
+                marginTop: {xs: '10px', sm:'10px', md: '0px'},
+                marginLeft: {xs: '0', sm: '0', md: '10%'}
                 }}>
-                    <Typography variant="h6" >Address</Typography>
+                    <Typography variant="h6" sx={{color: 'white'}}>Address</Typography>
                     <Typography variant="body2" sx={{
-                        marginTop: '20px'
+                        marginTop: '20px',
+                        color: 'white',
                     }}>Jl. Raya Cijujung Blok.C-16 Sukaraja, Kab. Bogor, Jawa Barat, Indonesia (16710)</Typography>
-                    <Typography variant="body2" sx={{marginTop: '50px'}}>© 2022 Arenga Sugar Indo. All rights reserved</Typography>
+                    <Typography variant="body2" sx={{marginTop: '50px', color: 'white'}}>© 2022 Arenga Sugar Indo. All rights reserved</Typography>
             </Container>
             <Container sx={{
-                width: '600px',
+                width: {xs: 'xs', sm: 'xs', md: '30%'},
                 display : 'flex',
                 flexDirection: 'column',
                 }}>
-                    <Typography variant="h6" sx={{marginLeft: '120px'}}>Contacts</Typography>
+                    <Typography variant="h6" sx={{color: 'white'}}>Contacts</Typography>
                     <Typography variant="body2"sx={{
                         marginTop: '20px',
-                        marginLeft: '120px'
+                        color: 'white',
                     }}>arengasugarindo@gmail.com </Typography>
-                    <Typography variant="body2" sx={{marginLeft: '120px'}}>marketing@arengasugarindo.com</Typography>
-                    <Typography variant="body2" sx={{marginLeft: '120px'}}>Whatsapp : +62 812 8826 084</Typography>
+                    <Typography variant="body2" sx={{ color: 'white',}}>info@arengasugarindo.com</Typography>
+                    <Typography variant="body2" sx={{ color: 'white',}}>Whatsapp : +62 812 8826 084</Typography>
             </Container>
-            <Container sx={{
-                width: '400px',
-                paddingLeft: '20px',
+            <Container  sx={{
+                width: {xs: 'xs', sm: 'xs', md: '30%'},
+                display : 'flex',
+                flexDirection: 'column',
+                paddingBottom: {xs: '10px', sm:'10px', md: '0'},
                 }}>
                     <Typography variant="h6" sx={{
-                        marginBottom: '20px'
+                        marginBottom: '20px',
+                        color: 'white',
                     }}>Social Media</Typography>
-                    
-                    <Link href="https://instagram.com/arengasugarindo?igshid=YmMyMTA2M2Y=" target="blank">
-                        <InstagramIcon sx={{color: 'white'}}/>
-                    </Link> 
-                    <Link href="https://www.linkedin.com/company/indo-export-group/" target="blank">
-                        <LinkedInIcon/>
-                    </Link>
+                    <Container disableGutters>
+                        <Link href="https://instagram.com/arengasugarindo?igshid=YmMyMTA2M2Y=" target="blank">
+                            <InstagramIcon sx={{color: 'white', paddingRight: '10px'}}/>
+                        </Link> 
+                        <Link href="https://www.linkedin.com/company/indo-export-group/" target="blank">
+                            <LinkedInIcon sx={{color: 'white'}}/>
+                        </Link>
+                    </Container>
                                         
             </Container>
             

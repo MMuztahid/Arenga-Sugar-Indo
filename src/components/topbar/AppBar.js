@@ -1,16 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import { AppBar, Toolbar, Button, useScrollTrigger, Slide, Stack } from'@mui/material';
 import { useNavigate } from 'react-router-dom';
 import '../../App.css';
+import DrawerBar from "./DrawerBar";
 
 function HideOnScroll(props) {
   const { children, window } = props;
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
+
+  
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
   });
+  
 
   return (
     <Slide appear={false} direction="down" in={!trigger}>
@@ -19,31 +20,39 @@ function HideOnScroll(props) {
   );
   };
 
-function TopBar(){
-    const navigate = useNavigate();
-    return(
-      <HideOnScroll>
-        <AppBar position="fixed" elevation={0} color="transparent" classes="top-nav"sx={{
-          width: '100%',
-          height:'10vh',
-          justifyContent: 'center',
-          elevation:'none'
+
+function TopBar(props){
+  const navigate = useNavigate();
+  const [topbar, setTopbar] = useState(false);
+  const changeBackground = () => {
+    if(window.scrollY >= 50) {
+      setTopbar(true);
+    } else {
+      setTopbar(false);
+    }
+  }
+  window.addEventListener('scroll', changeBackground);
+  return(
+    <HideOnScroll>
+      <AppBar elevation={0} color="transparent" className={topbar ? 'topbar active': 'topbar'}>
+        <Toolbar   sx={{
+          justifyContent:'flex-end',
+          alignItems:'center',
         }}>
-            <Toolbar   sx={{
-              justifyContent:'flex-end',
-              alignItems:'center',
-              padding:'20px 0px',
-            }}>
-              <Stack direction="row" spacing={1}>
-              <Button variant='text' size="large" onClick={() => navigate('/')} sx={{color:'#eee', fontSize:'1rem', fontWeight: '700', '&:hover':{ color:'lightBlue'}}}>Home</Button>
-              <Button variant='text' size="large" onClick={() => navigate('/contact')} sx={{color:'#eee', fontSize:'1rem', fontWeight: '700', '&:hover':{ color:'lightBlue'}}}>Contacts</Button>
-              <Button variant='text' size="large" onClick={() => navigate('/aboutarenga')} sx={{color:'#eee', fontSize:'1rem', fontWeight: '700', '&:hover':{ color:'lightBlue'}}}>About</Button>             
-              <Button variant='text' size="large" onClick={() => navigate('/distribution')} sx={{color:'#eee', fontSize:'1rem', fontWeight: '700', '&:hover':{ color:'lightBlue'}}}>Distribution</Button>
-              <Button variant='text' size="large" onClick={() => navigate('/product')} sx={{color:'#eee', fontSize:'1rem', fontWeight: '700', '&:hover':{ color:'lightBlue'}}}>Product</Button>
-              </Stack>
-            </Toolbar>
-        </AppBar>
-        </HideOnScroll>
+          <Stack className="Topbar" direction="row" spacing={1} sx={{
+            display: {xs: 'none', sm: 'none', md: 'block'},
+          }}>
+            <Button variant='text' size="large" onClick={() => navigate('/')} sx={{color:'#eee', fontSize:{xs: '0.9rem',sm:'0.9rem',md: '1rem'}, fontWeight: '600', fontFamily: `glacial indifference`, '&:hover':{ color:'lightBlue'}}}>Home</Button>
+            <Button variant='text' size="large" onClick={() => navigate('/aboutarenga')} sx={{color:'#eee', fontSize:'1rem', fontWeight: '700', fontFamily: `glacial indifference`, '&:hover':{ color:'lightBlue'}}}>About</Button>             
+            <Button variant='text' size="large" onClick={() => navigate('/product')} sx={{color:'#eee', fontSize:'1rem', fontWeight: '700', fontFamily: `glacial indifference`, '&:hover':{ color:'lightBlue'}}}>Product</Button>
+            <Button variant='text' size="large" onClick={() => navigate('/distribution')} sx={{color:'#eee', fontSize:'1rem', fontWeight: '700', fontFamily: `glacial indifference`, '&:hover':{ color:'lightBlue'}}}>Distribution</Button>
+            <Button variant='text' size="large" onClick={() => navigate('/contact')} sx={{color:'#eee', fontSize:'1rem', fontWeight: '700', fontFamily: `glacial indifference`, '&:hover':{ color:'lightBlue'}}}>Contact</Button>
+          </Stack>
+          <DrawerBar/>
+        </Toolbar>
+        
+      </AppBar>
+    </HideOnScroll>
     );
 };
 

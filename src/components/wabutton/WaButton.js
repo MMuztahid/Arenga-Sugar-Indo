@@ -11,11 +11,11 @@ function WaButton(){
             color:"white",
             width:"30",
             height:"30",
-            bottom: (theme) => theme.spacing(2),
-            right: (theme) => theme.spacing(2),
+            bottom: (theme) => theme.spacing(4),
+            right: (theme) => theme.spacing(4),
             '&:hover':{color:"black"}
         }}
-        href="https://api.whatsapp.com/send?phone=6281288262036&text=Hello World!!!"
+        href="https://api.whatsapp.com/send?phone=6281288262036&text=Hello Arenga Sugar Indo!"
         target="blank" >
             <WhatsappTwoToneIcon fontSize="large"/>   
         </Fab>

@@ -1,27 +1,44 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
+
+
 #app { height: 100% }
 html,
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif, Roboto;
+}
+#root {
+  width: 100%;
+  height: 100vh;
+  display: flexbox;
 }
 
 body {
-  background: #fff;
+  width: 100%;
+  height: fit-content;
+  background: #28282b;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 14px;
   color:#fff;
   margin: 0;
   padding: 0;
+  flex: 1;
+  
+}
+.App {
+  overflow-x: hidden;
 }
 
-#background-video{
+#app__backgroundVideo{
   width: 100%;
   height: auto;
   float: left;
   top: 0;
   left: 0;
   padding: none;
-  position: absolute;
-  object-fit: cover;
+  position: relative;
+  margin-bottom: 100px;
+  -o-object-fit: cover;
+    object-fit: cover;
 }
 
 .scrollTop {
@@ -49,17 +66,74 @@ body {
     opacity: 0.5;
   }
 }
+
 .center {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 80%;
 }
-.bottomBar{
+
+.bottom-bar{
   width: 100%;
   height: 220px;
+  display: flex;
   position: relative;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;  
   bottom: 0;
-  background-color: #28282b;
-
+  left: 0;
+  background: #28282b;
 }
+
+.topbar {
+  width: 100%;
+  height: 10vh;
+  justify-content: center;
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+
+.topbar.active { 
+  background: chocolate;
+}
+
+.about-image {
+  position: relative;
+  max-width: 80%;
+  height: auto;
+  left: 10%;
+  background-image: url('./components/imagegallery/2.jpg');
+  background-repeat: no-repeat;
+}
+
+.fotoShopee{
+  width: 400px; 
+  height: 99px;
+}
+
+@media screen and (max-width: 650px){
+  .bottom-bar {
+    height: fit-content;
+  }
+  .topbar {
+    display: none;
+    height: 6vh;
+  }
+  .fotoShopee{
+    margin-top: 100px;
+  }
+}
+@media screen and (max-width: 900px){
+  .bottom-bar {
+    height: fit-content;
+  }
+  .topbar {
+    height: 6vh;
+  }
+}
+

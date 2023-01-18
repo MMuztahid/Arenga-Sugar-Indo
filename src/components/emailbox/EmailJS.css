@@ -1,0 +1,34 @@
+input[type=email], input[type=text], textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  
+  input[type=submit] {
+    background-color: #04AA6D;
+    position: relative;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    left: 78%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+  @media screen and (max-width: 600px) {
+    .column, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+      left: 50%;  
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+    }
+  }
